@@ -1,0 +1,14 @@
+.profile__block-info-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 767px) {
+  .profile__block-info-name {
+    margin-bottom: 10px;
+    width: 282px;
+    justify-content: center;
+    margin-left: 29px;
+  }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Место Россия</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/index.js" defer></script>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img
+        src="./images/header-logo.svg"
+        class="header__logo"
+        alt="Логотип состоящий из слова Местро в степени Россия на английском"
+      />
+      <div class="header__line"></div>
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__block">
+          <div class="profile__image"></div>
+          <div class="profile__block-info">
+            <div class="profile__block-info-name">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button">
+                <img
+                  src="./images/white-pen-edit-button.svg"
+                  alt="Иконка белой ручки"
+                />
+              </button>
+            </div>
+            <p class="profile__about-yourself">Исследователь океана</p>
+          </div>
+        </div>
+        <button class="profile__add-button">
+          <img
+            src="./images/white-pluse-add-button.svg"
+            class="profile__add-button-plus"
+            alt="Иконка белого плюса"
+          />
+        </button>
+      </section>
+      <section class="places">
+        <article class="place">
+          <img
+            src="./images/karachaevsk-image.jpg"
+            class="place__image"
+            alt="Старая полуразрушенная часовня в лесистых горах"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Карачаевск</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+        <article class="place">
+          <img
+            src="./images/elbrus-image.png"
+            class="place__image"
+            alt="Большой зеленый луг на заднем фоне которого холмы и гора на фоне оранжеватого неба"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Гора Эльбрус</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+        <article class="place">
+          <img
+            src="./images/dombai-image.png"
+            class="place__image"
+            alt="Лесистое ущелье между высоки горами"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Домбай</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+        <article class="place">
+          <img
+            src="./images/elbrus-image.png"
+            class="place__image"
+            alt="Большой зеленый луг на заднем фоне которого холмы и гора на фоне оранжеватого неба"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Гора Эльбрус</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+        <article class="place">
+          <img
+            src="./images/dombai-image.png"
+            class="place__image"
+            alt="Лесистое ущелье между высоки горами"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Домбай</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+        <article class="place">
+          <img
+            src="./images/karachaevsk-image.jpg"
+            class="place__image"
+            alt="Старая полуразрушенная часовня в лесистых горах"
+          />
+          <div class="place__block">
+            <h2 class="place__title">Карачаево-Черкессия</h2>
+            <button class="place__like-button place__like-button_active">
+              <img
+                src="./images/white-heart-like-button.svg"
+                alt="Иконка белое сердечко"
+              />
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+      <form class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input
+          type="text"
+          name="name"
+          placeholder="Имя"
+          class="popup__input-name"
+        />
+        <input
+          type="text"
+          name="about-yourself"
+          placeholder="О себе"
+          class="popup__input-about-yourself"
+        />
+        <button class="popup__save-button">Сохранить</button>
+        <button type="button" class="popup__close-button">
+          <img
+            src="./images/white-cross-close-button.png"
+            class="popup__close-button-img"
+            alt="Иконка белого креста"
+          />
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
