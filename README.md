@@ -11,5 +11,5 @@
 4. Редактирование информации профиля
 5. Еще более углубленное изучение Git ( профессиональная работа с ветками)
 
-Ссылка на сайт: https://vladiskharchenko.github.io/russian-travel/
+Ссылка на сайт: https://vladiskharchenko.github.io/mesto/
 
