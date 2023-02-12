@@ -14,16 +14,19 @@
         class="header__logo"
         alt="Логотип состоящий из слова Местро в степени Россия на английском"
       />
-      <div class="header__line"></div>
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__block">
-          <div class="profile__image"></div>
+          <img
+            src="./images/profile-image.jpg"
+            class="profile__image"
+            alt="Круглое фото профиля"
+          />
           <div class="profile__block-info">
             <div class="profile__block-info-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button">
+              <button type="button" class="profile__edit-button">
                 <img
                   src="./images/white-pen-edit-button.svg"
                   alt="Иконка белой ручки"
@@ -33,7 +36,7 @@
             <p class="profile__about-yourself">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button">
+        <button type="button" class="profile__add-button">
           <img
             src="./images/white-pluse-add-button.svg"
             class="profile__add-button-plus"
@@ -50,7 +53,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Карачаевск</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -66,7 +72,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Гора Эльбрус</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -82,7 +91,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Домбай</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -98,7 +110,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Гора Эльбрус</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -114,7 +129,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Домбай</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -130,7 +148,10 @@
           />
           <div class="place__block">
             <h2 class="place__title">Карачаево-Черкессия</h2>
-            <button class="place__like-button place__like-button_active">
+            <button
+              type="button"
+              class="place__like-button place__like-button_active"
+            >
               <img
                 src="./images/white-heart-like-button.svg"
                 alt="Иконка белое сердечко"
@@ -144,21 +165,23 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
     <div class="popup">
-      <form class="popup__container">
+      <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Имя"
-          class="popup__input-name"
-        />
-        <input
-          type="text"
-          name="about-yourself"
-          placeholder="О себе"
-          class="popup__input-about-yourself"
-        />
-        <button class="popup__save-button">Сохранить</button>
+        <form name="popup-form">
+          <input
+            type="text"
+            name="name"
+            placeholder="Имя"
+            class="popup__input popup__input_type_name"
+          />
+          <input
+            type="text"
+            name="about-yourself"
+            placeholder="О себе"
+            class="popup__input popup__input_type_about-yourself"
+          />
+          <button type="submit" class="popup__save-button">Сохранить</button>
+        </form>
         <button type="button" class="popup__close-button">
           <img
             src="./images/white-cross-close-button.png"
@@ -166,7 +189,7 @@
             alt="Иконка белого креста"
           />
         </button>
-      </form>
+      </div>
     </div>
   </body>
 </html>
