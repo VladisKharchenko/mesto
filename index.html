@@ -44,130 +44,15 @@
           />
         </button>
       </section>
-      <section class="places">
-        <article class="place">
-          <img
-            src="./images/karachaevsk-image.jpg"
-            class="place__image"
-            alt="Старая полуразрушенная часовня в лесистых горах"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Карачаевск</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-        <article class="place">
-          <img
-            src="./images/elbrus-image.png"
-            class="place__image"
-            alt="Большой зеленый луг на заднем фоне которого холмы и гора на фоне оранжеватого неба"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Гора Эльбрус</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-        <article class="place">
-          <img
-            src="./images/dombai-image.png"
-            class="place__image"
-            alt="Лесистое ущелье между высоки горами"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Домбай</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-        <article class="place">
-          <img
-            src="./images/elbrus-image.png"
-            class="place__image"
-            alt="Большой зеленый луг на заднем фоне которого холмы и гора на фоне оранжеватого неба"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Гора Эльбрус</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-        <article class="place">
-          <img
-            src="./images/dombai-image.png"
-            class="place__image"
-            alt="Лесистое ущелье между высоки горами"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Домбай</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-        <article class="place">
-          <img
-            src="./images/karachaevsk-image.jpg"
-            class="place__image"
-            alt="Старая полуразрушенная часовня в лесистых горах"
-          />
-          <div class="place__block">
-            <h2 class="place__title">Карачаево-Черкессия</h2>
-            <button
-              type="button"
-              class="place__like-button place__like-button_active"
-            >
-              <img
-                src="./images/white-heart-like-button.svg"
-                alt="Иконка белое сердечко"
-              />
-            </button>
-          </div>
-        </article>
-      </section>
+      <section class="places"></section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup_type_edit-profile">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form name="popup-form">
+        <form class="form-edit-profile" name="form-edit-profile">
           <input
             type="text"
             name="name"
@@ -191,5 +76,55 @@
         </button>
       </div>
     </div>
+    <div class="popup popup_type_edit-card">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="form-edit-card" name="form-edit-card">
+          <input
+            type="text"
+            name="card-title"
+            placeholder="Название"
+            class="popup__input popup__input_type_card-title"
+          />
+          <input
+            type="text"
+            name="picture-link"
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_type_picture-link"
+          />
+          <button type="submit" class="popup__card-save-button">Создать</button>
+        </form>
+        <button type="button" class="popup__card-close-button">
+          <img
+            src="./images/white-cross-close-button.png"
+            class="popup__close-button-img"
+            alt="Иконка белого креста"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="popup popup_type_image">
+      <div class="popup__image-block">
+        <img src="" class="popup__image" alt="" />
+        <p class="popup__image-text"></p>
+        <button type="button" class="popup__image-close-button">
+          <img
+            src="./images/white-cross-close-button.png"
+            class="popup__close-button-img"
+            alt="Иконка белого креста"
+          />
+        </button>
+      </div>
+    </div>
+    <template class="template-place">
+      <article class="place">
+        <button type="button" class="place__delete-button"></button>
+        <img src="#" class="place__image" alt />
+        <div class="place__block">
+          <h2 class="place__title"></h2>
+          <button type="button" class="place__like-button"></button>
+        </div>
+      </article>
+    </template>
   </body>
 </html>
