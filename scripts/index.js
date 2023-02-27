@@ -84,10 +84,11 @@ function createPlace(nameValue, linkValue) {
   const placeImage = placeElement.querySelector('.place__image');
   placeImage.src = linkValue;
 
-  const placeTitle = (placeElement.querySelector('.place__title').textContent =
-    nameValue);
+  const placeTitle = placeElement.querySelector('.place__title');
 
-  placeImage.alt = placeTitle;
+  placeTitle.alt = nameValue;
+
+  placeTitle.textContent= nameValue;
 
   placeElement
     .querySelector('.place__like-button')
