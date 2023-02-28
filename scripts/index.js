@@ -86,9 +86,9 @@ function createPlace(nameValue, linkValue) {
 
   const placeTitle = placeElement.querySelector('.place__title');
 
-  placeTitle.alt = nameValue;
-
   placeTitle.textContent= nameValue;
+
+  placeImage.alt = placeTitle.textContent;
 
   placeElement
     .querySelector('.place__like-button')
@@ -106,7 +106,7 @@ function createPlace(nameValue, linkValue) {
 
   placeImage.addEventListener('click', function (evt) {
     popupImage.src = evt.target.src;
-    popupImage.alt = placeTitle;
+    popupImage.alt = placeTitle.textContent;
     popupImageText.textContent = popupImage.alt;
 
     openPopup(imagePopup);
