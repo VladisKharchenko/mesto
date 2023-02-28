@@ -115,7 +115,6 @@ function createPlace(nameValue, linkValue) {
   return placeElement
 }
 
-
 function addedNewPlace (nameValue, linkValue) {
   const newPlace = createPlace(nameValue, linkValue);
   placeContainer.prepend(newPlace);
