@@ -64,7 +64,7 @@ function closePopup(evt) {
   evt.target.closest('.popup').classList.remove('popup_opened');
 }
 
-function handleFormSubmit(evt) {
+function handleFormEdit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = popupInputName.value;
   profileAboutYourselfElement.textContent = popupInputAboutYourself.value;
@@ -73,13 +73,13 @@ function handleFormSubmit(evt) {
 
 function renderPlaces() {
   for (let i = 0; i < initialCards.length; i++) {
-    createPlace(initialCards[i].name, initialCards[i].link);
+    placeContainer.prepend(createPlace(initialCards[i].name, initialCards[i].link));
   }
 }
 
 function createPlace(nameValue, linkValue) {
   const placeTemplate = document.querySelector('.template-place').content;
-  const placeElement = placeTemplate.querySelector('.place').cloneNode(true);
+  const placeElement = placeTemplate.cloneNode(true);
 
   const placeImage = placeElement.querySelector('.place__image');
   placeImage.src = linkValue;
@@ -112,12 +112,18 @@ function createPlace(nameValue, linkValue) {
     openPopup(imagePopup);
   });
 
-  placeContainer.prepend(placeElement);
+  return placeElement
+}
+
+
+function addedNewPlace (nameValue, linkValue) {
+  const newPlace = createPlace(nameValue, linkValue);
+  placeContainer.prepend(newPlace);
 }
 
 function handleFormAdd(evt) {
   evt.preventDefault();
-  createPlace(nameCard.value, link.value);
+  addedNewPlace(nameCard.value, link.value);
   closePopup(evt);
 }
 
@@ -135,7 +141,7 @@ cardEditButton.addEventListener('click', () => {
 
 closeButtons.forEach((el) => el.addEventListener('click', closePopup));
 
-formElement.addEventListener('submit', handleFormSubmit);
+formElement.addEventListener('submit', handleFormEdit);
 
 formEditProfile.addEventListener('submit', handleFormAdd);
 
