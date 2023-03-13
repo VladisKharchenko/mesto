@@ -3,18 +3,19 @@ const showInputError = (
   inputElement,
   validationMessage,
   inputErrorClass,
-  errorClass
+  errorClass,
+  config
 ) => {
   const errorElement = document.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.add(inputErrorClass);
+  errorElement.classList.add(config.inputErrorClass);
   errorElement.textContent = validationMessage;
-  inputElement.classList.add(errorClass);
+  inputElement.classList.add(config.errorClass);
 };
 
 const hideInputError = (form, inputElement, inputErrorClass, errorClass) => {
   const errorElement = document.querySelector(`.${inputElement.id}-error`);
-  errorElement.classList.remove(inputErrorClass);
-  inputElement.classList.remove(errorClass);
+  errorElement.classList.remove(config.inputErrorClass);
+  inputElement.classList.remove(config.errorClass);
   inputElement.textContent = '';
 };
 
@@ -23,6 +24,7 @@ const checkInputValidity = (
   inputElement,
   inputErrorClass,
   errorClass,
+  config
 ) => {
   if (!inputElement.validity.valid) {
     showInputError(
@@ -30,19 +32,20 @@ const checkInputValidity = (
       inputElement,
       inputElement.validationMessage,
       inputErrorClass,
-      errorClass
+      errorClass,
+      config
     );
   } else {
-    hideInputError(form, inputElement, inputErrorClass, errorClass);
+    hideInputError(form, inputElement, inputErrorClass, errorClass, config);
   }
 };
 
-const setButtonState = (inputList, buttonElement, inactiveButtonClass) => {
+const setButtonState = (inputList, buttonElement, inactiveButtonClass, config) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
@@ -65,6 +68,7 @@ const enableValidation = (config) => {
           inputElement,
           config.inputErrorClass,
           config.errorClass,
+          config
         );
         setButtonState(inputList, buttonElement, config.inactiveButtonClass);
       });
@@ -78,14 +82,14 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-function cleanError(popup) {
+function cleanError(popup, config) {
   const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
   const buttonElement = popup.querySelector(config.submitButtonSelector);
-  inputList.forEach(inputElement => hideInputError(popup, inputElement));
-  setButtonState(inputList, buttonElement);
+  inputList.forEach(inputElement => hideInputError(popup, inputElement, config));
+  setButtonState(inputList, buttonElement, config);
 }
 
-enableValidation({
+const config = ({
   formSelector: '.form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__submit',
@@ -93,5 +97,7 @@ enableValidation({
   inputErrorClass: 'popup__input-error_active',
   errorClass: 'popup__input_type_error',
 });
+
+enableValidation(config);
 
 
