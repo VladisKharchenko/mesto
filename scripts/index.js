@@ -60,6 +60,7 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
   document.addEventListener('mousedown', closeByClick);
+  cleanError(popup);
 }
 
 function closePopup(popup) {

@@ -22,7 +22,7 @@ const checkInputValidity = (
   form,
   inputElement,
   inputErrorClass,
-  errorClass
+  errorClass,
 ) => {
   if (!inputElement.validity.valid) {
     showInputError(
@@ -64,7 +64,7 @@ const enableValidation = (config) => {
           form,
           inputElement,
           config.inputErrorClass,
-          config.errorClass
+          config.errorClass,
         );
         setButtonState(inputList, buttonElement, config.inactiveButtonClass);
       });
@@ -78,6 +78,13 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
+function cleanError(popup) {
+  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
+  const buttonElement = popup.querySelector(config.submitButtonSelector);
+  inputList.forEach(inputElement => hideInputError(popup, inputElement));
+  setButtonState(inputList, buttonElement);
+}
+
 enableValidation({
   formSelector: '.form',
   inputSelector: '.popup__input',
@@ -86,3 +93,5 @@ enableValidation({
   inputErrorClass: 'popup__input-error_active',
   errorClass: 'popup__input_type_error',
 });
+
+
