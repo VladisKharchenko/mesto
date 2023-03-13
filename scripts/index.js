@@ -60,7 +60,6 @@ function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
   document.addEventListener('mousedown', closeByClick);
-  cleanError(popup);
 }
 
 function closePopup(popup) {
@@ -147,12 +146,14 @@ profileEditButton.addEventListener('click', () => {
   popupInputName.value = profileNameElement.textContent;
   popupInputAboutYourself.value = profileAboutYourselfElement.textContent;
   openPopup(profileEditPopup);
+  cleanError(profileEditPopup, config);
 });
 
 cardEditButton.addEventListener('click', () => {
   nameCard.value = '';
   link.value = '';
   openPopup(сardEditPopup);
+  cleanError(сardEditPopup, config);
 });
 
 closeButtons.forEach((el) => el.addEventListener('click', () => {

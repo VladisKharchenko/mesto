@@ -2,8 +2,6 @@ const showInputError = (
   form,
   inputElement,
   validationMessage,
-  inputErrorClass,
-  errorClass,
   config
 ) => {
   const errorElement = document.querySelector(`.${inputElement.id}-error`);
@@ -12,7 +10,7 @@ const showInputError = (
   inputElement.classList.add(config.errorClass);
 };
 
-const hideInputError = (form, inputElement, inputErrorClass, errorClass) => {
+const hideInputError = (form, inputElement, config) => {
   const errorElement = document.querySelector(`.${inputElement.id}-error`);
   errorElement.classList.remove(config.inputErrorClass);
   inputElement.classList.remove(config.errorClass);
@@ -22,8 +20,6 @@ const hideInputError = (form, inputElement, inputErrorClass, errorClass) => {
 const checkInputValidity = (
   form,
   inputElement,
-  inputErrorClass,
-  errorClass,
   config
 ) => {
   if (!inputElement.validity.valid) {
@@ -31,16 +27,14 @@ const checkInputValidity = (
       form,
       inputElement,
       inputElement.validationMessage,
-      inputErrorClass,
-      errorClass,
       config
     );
   } else {
-    hideInputError(form, inputElement, inputErrorClass, errorClass, config);
+    hideInputError(form, inputElement, config);
   }
 };
 
-const setButtonState = (inputList, buttonElement, inactiveButtonClass, config) => {
+const setButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = true;
@@ -66,11 +60,9 @@ const enableValidation = (config) => {
         checkInputValidity(
           form,
           inputElement,
-          config.inputErrorClass,
-          config.errorClass,
           config
         );
-        setButtonState(inputList, buttonElement, config.inactiveButtonClass);
+        setButtonState(inputList, buttonElement, config);
       });
     });
   });
@@ -82,10 +74,10 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-function cleanError(popup, config) {
-  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
-  const buttonElement = popup.querySelector(config.submitButtonSelector);
-  inputList.forEach(inputElement => hideInputError(popup, inputElement, config));
+function cleanError(form, config) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  const buttonElement = form.querySelector(config.submitButtonSelector);
+  inputList.forEach(inputElement => hideInputError(form, inputElement, config));
   setButtonState(inputList, buttonElement, config);
 }
 
