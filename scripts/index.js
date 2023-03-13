@@ -58,17 +58,34 @@ const nameCard = document.querySelector('.popup__input_type_card-title');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closeByEscape);
+  document.addEventListener('mousedown', closeByClick);
 }
 
-function closePopup(evt) {
-  evt.target.closest('.popup').classList.remove('popup_opened');
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
+  document.removeEventListener('mousedown', closeByClick);
 }
+
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
+function closeByClick(evt) {
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+};
 
 function handleFormEdit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = popupInputName.value;
   profileAboutYourselfElement.textContent = popupInputAboutYourself.value;
-  closePopup(evt);
+  closePopup(profileEditPopup);
 }
 
 function renderPlaces() {
@@ -108,7 +125,6 @@ function createPlace(nameValue, linkValue) {
     popupImage.src = evt.target.src;
     popupImage.alt = placeTitle.textContent;
     popupImageText.textContent = popupImage.alt;
-
     openPopup(imagePopup);
   });
 
@@ -123,7 +139,7 @@ function addedNewPlace (nameValue, linkValue) {
 function handleFormAdd(evt) {
   evt.preventDefault();
   addedNewPlace(nameCard.value, link.value);
-  closePopup(evt);
+  closePopup(сardEditPopup);
 }
 
 profileEditButton.addEventListener('click', () => {
@@ -138,7 +154,10 @@ cardEditButton.addEventListener('click', () => {
   openPopup(сardEditPopup);
 });
 
-closeButtons.forEach((el) => el.addEventListener('click', closePopup));
+closeButtons.forEach((el) => el.addEventListener('click', () => {
+  const popup = el.closest('.popup');
+  closePopup(popup);
+}));
 
 formElement.addEventListener('submit', handleFormEdit);
 
