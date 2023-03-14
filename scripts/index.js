@@ -45,6 +45,8 @@ const initialCards = [
   },
 ];
 
+const placeTemplate = document.querySelector('.template-place').content;
+
 const placeContainer = document.querySelector('.places');
 
 const popupImage = document.querySelector('.popup__image');
@@ -77,7 +79,7 @@ function closeByEscape(evt) {
 
 function closeByClick(evt) {
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
+    closePopup(evt.target);
   }
 };
 
@@ -95,7 +97,6 @@ function renderPlaces() {
 }
 
 function createPlace(nameValue, linkValue) {
-  const placeTemplate = document.querySelector('.template-place').content;
   const placeElement = placeTemplate.cloneNode(true);
 
   const placeImage = placeElement.querySelector('.place__image');
