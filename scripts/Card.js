@@ -8,12 +8,16 @@ export class Card {
     this._popup = document.querySelector('.popup_type_image');
     this._popupImage = document.querySelector('.popup__image');
     this._popupImageText = document.querySelector('.popup__image-text');
-    this._openPopup = () => {
-      this._popupImage.src = data.link;
-      this._popupImage.alt = data.name;
-      this._popupImageText.textContent = data.name;
-      openPopup(this._popup);
-    };
+    this._likeButton = null;
+    this._deleteButton = null;
+    this._imagePlace = null;
+  }
+
+  _openPopup(data) {
+    this._popupImage.src = data.link;
+    this._popupImage.alt = data.name;
+    this._popupImageText.textContent = data.name;
+    openPopup(this._popup);
   }
 
   _getTemplate() {
@@ -32,22 +36,25 @@ export class Card {
 
   _handlePlaceDelete() {
     this._element.remove();
+    this._element = null;
   }
 
   _setEventListeners() {
-    const likeButton = this._element.querySelector('.place__like-button');
-    const deleteButton = this._element.querySelector('.place__delete-button');
-    const imagePlace = this._element.querySelector('.place__image');
+    this._likeButton = this._element.querySelector('.place__like-button');
+    this._deleteButton = this._element.querySelector('.place__delete-button');
+    this._imagePlace = this._element.querySelector('.place__image');
 
-    likeButton.addEventListener('click', () => {
+    this._likeButton.addEventListener('click', () => {
       this._handlePlaceLike();
     });
 
-    deleteButton.addEventListener('click', () => {
+    this._deleteButton.addEventListener('click', () => {
       this._handlePlaceDelete();
     });
 
-    imagePlace.addEventListener('click', this._openPopup);
+    this._imagePlace.addEventListener('click', () => {
+      this._openPopup({ name: this._name, link: this._link });
+    });
   }
 
   generateCard() {
