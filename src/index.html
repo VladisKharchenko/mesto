@@ -4,43 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место Россия</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <header class="header">
-      <img
-        src="./images/header-logo.svg"
-        class="header__logo"
-        alt="Логотип состоящий из слова Местро в степени Россия на английском"
-      />
+      <img src="<%=require("./images/header-logo.svg")%>" class="header__logo"
+      alt="Логотип состоящий из слова Местро в степени Россия на английском" />
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__block">
-          <img
-            src="./images/profile-image.jpg"
-            class="profile__image"
-            alt="Круглое фото профиля"
-          />
+          <img src="<%=require("./images/profile-image.jpg")%>"
+          class="profile__image" alt="Круглое фото профиля" />
           <div class="profile__block-info">
             <div class="profile__block-info-name">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <button type="button" class="profile__edit-button">
-                <img
-                  src="./images/white-pen-edit-button.svg"
-                  alt="Иконка белой ручки"
-                />
+                <img src="<%=require("./images/white-pen-edit-button.svg")%>"
+                alt="Иконка белой ручки" />
               </button>
             </div>
             <p class="profile__about-yourself">Исследователь океана</p>
           </div>
         </div>
         <button type="button" class="profile__add-button">
-          <img
-            src="./images/white-pluse-add-button.svg"
-            class="profile__add-button-plus"
-            alt="Иконка белого плюса"
-          />
+          <img src="<%=require("./images/white-pluse-add-button.svg")%>"
+          class="profile__add-button-plus" alt="Иконка белого плюса" />
         </button>
       </section>
       <section class="places"></section>
@@ -87,11 +75,8 @@
           </button>
         </form>
         <button type="button" class="popup__close-button popup__button-close">
-          <img
-            src="./images/white-cross-close-button.png"
-            class="popup__close-button-img"
-            alt="Иконка белого креста"
-          />
+          <img src="<%=require("./images/white-cross-close-button.png")%>"
+          class="popup__close-button-img" alt="Иконка белого креста" />
         </button>
       </div>
     </div>
@@ -131,11 +116,8 @@
           type="button"
           class="popup__card-close-button popup__button-close"
         >
-          <img
-            src="./images/white-cross-close-button.png"
-            class="popup__close-button-img"
-            alt="Иконка белого креста"
-          />
+          <img src="<%=require("./images/white-cross-close-button.png")%>"
+          class="popup__close-button-img" alt="Иконка белого креста" />
         </button>
       </div>
     </div>
@@ -147,11 +129,8 @@
           type="button"
           class="popup__image-close-button popup__button-close"
         >
-          <img
-            src="./images/white-cross-close-button.png"
-            class="popup__close-button-img"
-            alt="Иконка белого креста"
-          />
+          <img src="<%=require("./images/white-cross-close-button.png")%>"
+          class="popup__close-button-img" alt="Иконка белого креста" />
         </button>
       </div>
     </div>
@@ -165,6 +144,5 @@
         </div>
       </article>
     </template>
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

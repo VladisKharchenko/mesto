@@ -33,3 +33,10 @@ export const config = {
   inputErrorClass: 'popup__input-error_active',
   errorClass: 'popup__input_type_error',
 };
+
+export const placeAddHtml = document.querySelector('.places');
+
+export const popupTypeImage = document.querySelector(".popup_type_image");
+
+export const popupAddImage = document.querySelector('.popup_type_edit-card');
+export const cardEditButton = document.querySelector(".profile__add-button");
