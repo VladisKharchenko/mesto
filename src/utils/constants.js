@@ -50,3 +50,6 @@ document.querySelector('[name="about"]');
 
 export const popupAddImage = '.popup_type_edit-card';
 export const cardEditButton = document.querySelector('.profile__add-button');
+
+export const formEditProfile = document.querySelector('.form-edit-profile');
+export const formEditCard = document.querySelector('.form-edit-card');
