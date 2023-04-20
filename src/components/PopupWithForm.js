@@ -1,12 +1,15 @@
-import Popup from "./Popup.js";
+import Popup from './Popup.js';
+import { FormValidator } from './FormValidator.js';
+import { config } from './constants.js';
 
 export default class PopupWithForm extends Popup {
   constructor(popupSelector, { handleSubmitForm }) {
     super(popupSelector);
     this._handleSubmitForm = handleSubmitForm;
     this._formInputs = Array.from(
-      this._popupSelector.querySelectorAll(".popup__input")
+      this._popup.querySelectorAll('.popup__input')
     );
+    this._formValidator = new FormValidator(config, this._popup.querySelector('.form'));
   }
 
   _getInputValues() {
@@ -19,7 +22,7 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._popupSelector.addEventListener("submit", (evt) => {
+    this._popup.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleSubmitForm(this._getInputValues());
     });
@@ -27,6 +30,10 @@ export default class PopupWithForm extends Popup {
 
   close() {
     super.close();
-    this._popupSelector.querySelector(".form").reset();
+    this._popup.querySelector('.form').reset();
+    this._formValidator.cleanError();
+    this._formValidator.enableValidation();
+    this._formValidator._updateFormValidity();
+
   }
 }

@@ -64,5 +64,3 @@ export class Card {
     return this._element;
   }
 }
-
-

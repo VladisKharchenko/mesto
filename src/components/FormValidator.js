@@ -8,6 +8,9 @@ export class FormValidator {
     this._buttonElement = this._formElement.querySelector(
       this._config.submitButtonSelector
     );
+    this._isFormValid = false;
+    this._setEventListeners();
+    this._updateFormValidity();
   }
 
   _setButtonState() {
@@ -70,5 +73,10 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListeners();
+  }
+
+  _updateFormValidity() {
+    this._isFormValid = !this._hasInvalidInput();
+    this._setButtonState();
   }
 }

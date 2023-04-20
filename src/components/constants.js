@@ -36,7 +36,17 @@ export const config = {
 
 export const placeAddHtml = document.querySelector('.places');
 
-export const popupTypeImage = document.querySelector(".popup_type_image");
+export const popupTypeImage = '.popup_type_image';
 
-export const popupAddImage = document.querySelector('.popup_type_edit-card');
-export const cardEditButton = document.querySelector(".profile__add-button");
+export const profileEditPopup = '.popup_type_edit-profile';
+export const profileEditButton = document.querySelector(
+  '.profile__edit-button'
+);
+export const profileTitle = document.querySelector('.profile__name');
+export const profileabout = document.querySelector('.profile__about-yourself');
+export const titleUserProfile = document.querySelector('[name="title"]');
+export const aboutUserProfile =
+document.querySelector('[name="about"]');
+
+export const popupAddImage = '.popup_type_edit-card';
+export const cardEditButton = document.querySelector('.profile__add-button');
