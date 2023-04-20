@@ -22,17 +22,8 @@ import UserInfo from '../components/UserInfo.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { config } from '../utils/constants.js';
 
-function makePopupEditProfileValidation() {
-  const popupEditProfileValidator = new FormValidator(config, formEditProfile);
-  popupEditProfileValidator.enableValidation();
-  popupEditProfileValidator.cleanError();
-}
-
-function makePopupAddCardValidation() {
-  const popupAddCardValidator = new FormValidator(config, formEditCard);
-  popupAddCardValidator.enableValidation();
-  popupAddCardValidator.cleanError();
-}
+const popupEditProfileValidator = new FormValidator(config, formEditProfile);
+const popupAddCardValidator = new FormValidator(config, formEditCard);
 
 const userInfoProfile = new UserInfo(profileTitle, profileabout);
 
@@ -44,13 +35,15 @@ const popupEditProfile = new PopupWithForm(profileEditPopup, {
 });
 popupEditProfile.setEventListeners();
 
-profileEditButton.addEventListener('click', () => {
+function renderFormProfile() {
   const inputData = userInfoProfile.getUserInfo();
   titleUserProfile.value = inputData.title;
   aboutUserProfile.value = inputData.about;
   popupEditProfile.open();
-  makePopupEditProfileValidation();
-});
+  popupEditProfileValidator.cleanError();
+};
+
+profileEditButton.addEventListener('click', renderFormProfile);
 
 const popupIncreaseImage = new PopupWithImage(popupTypeImage);
 popupIncreaseImage.setEventListeners();
@@ -83,10 +76,16 @@ const popupAddCard = new PopupWithForm(popupAddImage, {
 });
 popupAddCard.setEventListeners();
 
-cardEditButton.addEventListener('click', () => {
+function renderFormСard() {
   popupAddCard.open();
-  makePopupAddCardValidation();
-});
+  popupAddCardValidator.cleanError();
+};
+
+cardEditButton.addEventListener('click', renderFormСard);
 
 placeList.renderItems();
+
+popupEditProfileValidator.enableValidation();
+popupAddCardValidator.enableValidation();
+
 
