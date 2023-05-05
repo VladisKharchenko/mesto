@@ -31,3 +31,8 @@ export const profileInfoSelectors = {
   aboutSelector: '.profile__about-yourself',
   avatarSelector: '.profile__image',
 };
+
+export const popupInputName = document.querySelector('.popup__input_type_name');
+export const popupInputAbout = document.querySelector('.popup__input_type_about-yourself');
+export const profileName = document.querySelector('.profile__name');
+export const profileAbout = document.querySelector('.profile__about-yourself');

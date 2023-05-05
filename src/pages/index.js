@@ -11,6 +11,10 @@ import {
   formChangeAvatar,
   avatarChangeButton,
   profileInfoSelectors,
+  popupInputName,
+  popupInputAbout,
+  profileName,
+  profileAbout,
 } from '../utils/constants.js';
 import Section from '../components/Section.js';
 import { Card } from '../components/Card.js';
@@ -70,13 +74,13 @@ const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
       .updateUserInfo(inputData)
       .then((updatedUser) => {
         userInfoProfile.setUserInfo(updatedUser);
+        popupEditProfile.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         popupEditProfile.loadButton();
-        popupEditProfile.close();
       });
   },
 });
@@ -86,6 +90,8 @@ popupEditProfile.setEventListeners();
 function renderFormProfile() {
   popupEditProfile.open();
   popupEditProfileValidator.cleanError();
+  popupInputName.value = profileName.textContent;
+  popupInputAbout.value = profileAbout.textContent;
 }
 
 profileEditButton.addEventListener('click', renderFormProfile);
@@ -159,13 +165,13 @@ const popupAddCard = new PopupWithForm(popupAddImage, {
       .addNewCard(data.name, data.link)
       .then((newCard) => {
         placeList.prependItem(createPlace(newCard));
+        popupAddCard.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         popupAddCard.loadButton();
-        popupAddCard.close();
       });
   },
 });
@@ -186,13 +192,13 @@ const popupChangeAvatar = new PopupWithForm('.popup_type_change-avatar', {
       .changeAvatar(inputData.avatar)
       .then((updatedUser) => {
         userInfoProfile.setUserInfo(updatedUser);
+        popupChangeAvatar.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
         popupChangeAvatar.loadButton();
-        popupChangeAvatar.close();
       });
   },
 });
