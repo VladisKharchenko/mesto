@@ -39,14 +39,14 @@ export class Card {
   _getTemplate() {
     const placeElement = document
       .querySelector(this._templateSelector)
-      .content.querySelector(".place")
+      .content.querySelector('.place')
       .cloneNode(true);
     return placeElement;
   }
 
   _handlePlaceLike() {
-    this._likeButton.classList.toggle("place__like-button_active");
-    if (this._likeButton.classList.contains("place__like-button_active")) {
+    this._likeButton.classList.toggle('place__like-button_active');
+    if (this._likeButton.classList.contains('place__like-button_active')) {
       this._addLike();
     } else {
       this._removeLike();
@@ -54,7 +54,7 @@ export class Card {
   }
 
   _toggleLikeButton() {
-    this._likeButton.classList.toggle("place__like-button_active");
+    this._likeButton.classList.toggle('place__like-button_active');
   }
 
   _handleImageClick() {
@@ -62,15 +62,15 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._likeButton.addEventListener("click", this._handleLikeClick);
+    this._likeButton.addEventListener('click', this._handleLikeClick);
 
-    this._imagePlace.addEventListener("click", () => {
+    this._imagePlace.addEventListener('click', () => {
       this._handleImageClick();
     });
 
     if (this._deleteButton) {
       this._deleteButton.addEventListener(
-        "click",
+        'click',
         this._handleClickButtonDelete
       );
     }
@@ -79,13 +79,13 @@ export class Card {
   generateCard() {
     this._element = this._getTemplate();
 
-    const placeImage = this._element.querySelector(".place__image");
-    const placeTitle = this._element.querySelector(".place__title");
+    const placeImage = this._element.querySelector('.place__image');
+    const placeTitle = this._element.querySelector('.place__title');
 
-    this._likeButton = this._element.querySelector(".place__like-button");
-    this._deleteButton = this._element.querySelector(".place__delete-button");
-    this._imagePlace = this._element.querySelector(".place__image");
-    this._likesCount = this._element.querySelector(".place__like-count");
+    this._likeButton = this._element.querySelector('.place__like-button');
+    this._deleteButton = this._element.querySelector('.place__delete-button');
+    this._imagePlace = this._element.querySelector('.place__image');
+    this._likesCount = this._element.querySelector('.place__like-count');
 
     if (!this._isOwner()) {
       this._deleteButton.remove();

@@ -13,8 +13,9 @@
     <main class="content">
       <section class="profile">
         <div class="profile__block">
-          <img src="<%=require("./images/profile-image.jpg")%>"
-          class="profile__image" alt="Круглое фото профиля" />
+          <div class="profile__overlay">
+            <img src="" class="profile__image" alt="Круглое фото профиля" />
+          </div>
           <div class="profile__block-info">
             <div class="profile__block-info-name">
               <h1 class="profile__name"></h1>
@@ -48,7 +49,7 @@
             <input
               id="name-input"
               type="text"
-              name="title"
+              name="name"
               placeholder="Имя"
               class="popup__input popup__input_type_name"
               minlength="2"
@@ -138,8 +139,43 @@
       <div class="popup__container">
         <h2 class="popup__title-card-delete">Вы уверены?</h2>
         <form class="form">
-          <button type="submit" class="popup__submit popup__save-button popup__delete-button">
+          <button
+            type="submit"
+            class="popup__submit popup__save-button popup__delete-button"
+          >
             Да
+          </button>
+        </form>
+        <button type="button" class="popup__close-button popup__button-close">
+          <img src="<%=require("./images/white-cross-close-button.png")%>"
+          class="popup__close-button-img" alt="Иконка белого креста" />
+        </button>
+      </div>
+    </div>
+    <div class="popup popup_type_change-avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form
+          class="form form-change-avatar"
+          name="form-change-avatar"
+          novalidate
+        >
+          <fieldset class="popup__fieldset">
+            <input
+              id="avatar-link-input"
+              type="url"
+              name="avatar"
+              placeholder="Ссылка на картинку"
+              class="popup__input popup__input_type_avatar-link"
+              required
+            />
+            <span class="avatar-link-input-error popup__input-error"></span>
+          </fieldset>
+          <button
+            type="submit"
+            class="popup__submit popup__save-button popup__avatar-save-button"
+          >
+            Сохранить
           </button>
         </form>
         <button type="button" class="popup__close-button popup__button-close">

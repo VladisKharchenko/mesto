@@ -1,35 +1,32 @@
-import "./index.css";
+import './index.css';
 import {
   placeAddHtml,
   popupTypeImage,
   popupAddImage,
   cardEditButton,
   profileEditButton,
-  profileEditPopup,
-  profileTitle,
-  profileabout,
-  profileAvatar,
-  titleUserProfile,
-  aboutUserProfile,
   formEditProfile,
   formEditCard,
   popupCardDelete,
-} from "../utils/constants.js";
-import Section from "../components/Section.js";
-import { Card } from "../components/Card.js";
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
-import UserInfo from "../components/UserInfo.js";
-import { FormValidator } from "../components/FormValidator.js";
-import { config } from "../utils/constants.js";
-import Api from "../components/Api.js";
-import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+  formChangeAvatar,
+  avatarChangeButton,
+  profileInfoSelectors,
+} from '../utils/constants.js';
+import Section from '../components/Section.js';
+import { Card } from '../components/Card.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { config } from '../utils/constants.js';
+import Api from '../components/Api.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 
 const api = new Api({
-  baseUrl: "https://nomoreparties.co/v1/cohort-65",
+  baseUrl: 'https://nomoreparties.co/v1/cohort-65',
   headers: {
-    authorization: "d7db98be-0f68-4b1c-bf6a-476af911ba25",
-    "Content-Type": "application/json",
+    authorization: 'd7db98be-0f68-4b1c-bf6a-476af911ba25',
+    'Content-Type': 'application/json',
   },
 });
 
@@ -62,20 +59,24 @@ api
 
 const popupEditProfileValidator = new FormValidator(config, formEditProfile);
 const popupAddCardValidator = new FormValidator(config, formEditCard);
+const popupChangeAvatarValidator = new FormValidator(config, formChangeAvatar);
 
-const userInfoProfile = new UserInfo(profileTitle, profileabout);
+const userInfoProfile = new UserInfo(profileInfoSelectors);
 
-const popupEditProfile = new PopupWithForm(profileEditPopup, {
+const popupEditProfile = new PopupWithForm('.popup_type_edit-profile', {
   handleSubmitForm: (inputData) => {
+    popupEditProfile.loadingButton();
     api
-      .updateUserInfo(inputData.title, inputData.about)
+      .updateUserInfo(inputData)
       .then((updatedUser) => {
-        profileTitle.textContent = updatedUser.name;
-        profileabout.textContent = updatedUser.about;
-        popupEditProfile.close();
+        userInfoProfile.setUserInfo(updatedUser);
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        popupEditProfile.loadButton();
+        popupEditProfile.close();
       });
   },
 });
@@ -83,14 +84,11 @@ const popupEditProfile = new PopupWithForm(profileEditPopup, {
 popupEditProfile.setEventListeners();
 
 function renderFormProfile() {
-  const inputData = userInfoProfile.getUserInfo();
-  titleUserProfile.value = inputData.title;
-  aboutUserProfile.value = inputData.about;
   popupEditProfile.open();
   popupEditProfileValidator.cleanError();
 }
 
-profileEditButton.addEventListener("click", renderFormProfile);
+profileEditButton.addEventListener('click', renderFormProfile);
 
 const popupIncreaseImage = new PopupWithImage(popupTypeImage);
 popupIncreaseImage.setEventListeners();
@@ -118,7 +116,7 @@ const confirmDeletePopup = new PopupWithConfirmation(
 confirmDeletePopup.setEventListeners();
 
 function createPlace(data) {
-  const place = new Card(data, "#template-place", {
+  const place = new Card(data, '#template-place', {
     handleCardClick: () => handleCardClick(data),
     handleButtonDelete: (card) => confirmDeletePopup.open(card),
     isOwner: (userID) => userInfoProfile.getUserInfo().id === userID,
@@ -156,14 +154,18 @@ function createPlace(data) {
 
 const popupAddCard = new PopupWithForm(popupAddImage, {
   handleSubmitForm: (data) => {
+    popupAddCard.loadingButton();
     api
       .addNewCard(data.name, data.link)
       .then((newCard) => {
         placeList.prependItem(createPlace(newCard));
-        popupAddCard.close();
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        popupAddCard.loadButton();
+        popupAddCard.close();
       });
   },
 });
@@ -175,7 +177,35 @@ function renderFormСard() {
   popupAddCardValidator.cleanError();
 }
 
-cardEditButton.addEventListener("click", renderFormСard);
+cardEditButton.addEventListener('click', renderFormСard);
+
+const popupChangeAvatar = new PopupWithForm('.popup_type_change-avatar', {
+  handleSubmitForm: (inputData) => {
+    popupChangeAvatar.loadingButton();
+    api
+      .changeAvatar(inputData.avatar)
+      .then((updatedUser) => {
+        userInfoProfile.setUserInfo(updatedUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        popupChangeAvatar.loadButton();
+        popupChangeAvatar.close();
+      });
+  },
+});
+
+popupChangeAvatar.setEventListeners();
+
+function renderFormAvatar() {
+  popupChangeAvatar.open();
+  popupChangeAvatarValidator.cleanError();
+}
+
+avatarChangeButton.addEventListener('click', renderFormAvatar);
 
 popupEditProfileValidator.enableValidation();
 popupAddCardValidator.enableValidation();
+popupChangeAvatarValidator.enableValidation();
